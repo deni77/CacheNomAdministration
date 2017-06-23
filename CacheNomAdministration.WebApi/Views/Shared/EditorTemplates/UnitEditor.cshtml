@@ -1,0 +1,7 @@
+﻿@(
+Html.Kendo().DropDownList()
+    .Name("Units")
+    .DataTextField("Text")
+    .DataValueField("Value")
+   .BindTo((System.Collections.IEnumerable) ViewData["EngineeringUnit"])
+)

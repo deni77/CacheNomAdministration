@@ -1,0 +1,170 @@
+﻿@using CacheNomAdministration.WebApi.Models.Totalizers
+@Styles.Render("~/Content/kendo/css")
+@Styles.Render("~/Content/css")
+
+@{ var noRecordsTemplate = @"
+<div id='no-data-alert' class='alert alert-danger' role='alert'>Не съществуват тоталайзери по подаденото ID на контролна точка !</div>
+    <script>
+        $('\\#no-data-alert').fadeTo(2000, 500).slideUp(500, function () {
+            $('\\#no-data-alert').slideUp(500);
+        })
+    </script>
+";}
+@(Html
+        .Kendo()
+        .Grid<IndexViewModels>()
+            .Name("totalizerGrid")
+            .NoRecords(noReconrds => noReconrds.Template(noRecordsTemplate))
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.ControlPointID).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.ControlPointName).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.EngineeringUnit).Width(130);
+                columns.Bound(p => p.ProductCode).Width(130);
+                columns.Bound(p => p.TotalizerTag).Width(280).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.FlowDirection).Width(100).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.ControlerCode).Width(100).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.PositionNumber).Width(110).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Command(command => { command.Edit(); command.Destroy(); }).Width(190);
+            })
+        //    .Events(eEvents => eEvents.Edit("disableOnEdit"))
+        .Editable(editable => editable.Mode(GridEditMode.InLine))
+        .HtmlAttributes(new { style = "height: 400px;width:1330px;" })
+        .Scrollable()
+        .Sortable()
+        .Pageable(pageable => pageable
+                                    .Refresh(true)
+                                    .PageSizes(true)
+                                    .ButtonCount(5)
+                                    .Enabled(true)
+                                    .PreviousNext(true)
+                    )
+        .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+        .DataSource(data =>
+        {
+            data.Ajax()
+                   .Events(events => events.Error("error_handler"))
+                   .Events(e => e.RequestEnd("onRequestEnd"))
+                 
+                   .Model(model =>
+                   {
+                       model.Id(m=>m.TotalizerTag);
+                       model.Field(field => field.ControlPointID).Editable(false);
+                       model.Field(field => field.ControlPointName).Editable(true);
+                       model.Field(field => field.EngineeringUnit).Editable(true);
+                       model.Field(field => field.ProductCode).Editable(true);
+                       model.Field(field => field.TotalizerTag).Editable(false);
+                       model.Field(field => field.FlowDirection).Editable(false);
+                       model.Field(field => field.ControlerCode).Editable(false);
+                       model.Field(field => field.PositionNumber).Editable(false);
+                   })
+                    .ServerOperation(false)
+                    .PageSize(7)
+                    .Read(read => read.Action("GetByControlPointIdGrid", "Totalizer").Data("gridData.getControlPointId"))
+                    .Destroy(delete => delete.Action("Delete", "Totalizer"))
+                    .Update(update => update.Action("Update", "Totalizer"));
+        })
+)
+<script type="text/javascript">
+   (function ($, kendo) {
+        $.extend(true, kendo.ui.validator, {
+            rules: {
+                remote: function (input) {
+                    if (input.val() == "" || !input.attr("data-val-remote-url")) {
+                        return true;
+                    }
+                    if (input.attr("data-val-remote-recieved")) {
+                        input.attr("data-val-remote-recieved", "");
+                        return !(input.attr("data-val-remote"));
+                    }
+
+                    var url = input.attr("data-val-remote-url");
+                    var postData = {};
+                    postData[input.attr("data-val-remote-additionalfields").split(".")[1]] = input.val();
+
+                    var validator = this;
+                    var currentInput = input;
+                    input.attr("data-val-remote-requested", true);
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: JSON.stringify(postData),
+                        dataType: "json",
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            if (data == true) {
+                                input.attr("data-val-remote", "");
+                            }
+                            else {
+                                input.attr("data-val-remote", data);
+                            }
+                            input.attr("data-val-remote-recieved", true);
+                            validator.validateInput(currentInput);
+
+                        },
+                        error: function () {
+                            input.attr("data-val-remote-recieved", true);
+                            validator.validateInput(currentInput);
+                        }
+                    });
+                    return true;
+                }
+            },
+            messages: {
+                remote: function (input) {
+                    return input.attr("data-val-remote");
+                }
+            }
+        });
+              
+   })(jQuery, kendo);
+
+   function error_handler(e) {
+       if (e.errors) {
+           var message = "Errors:\n";
+           $.each(e.errors, function (key, value) {
+               if ('errors' in value) {
+                   $.each(value.errors, function () {
+                       message += this + "\n";
+                   });
+               }
+           });
+           alert(message);
+       }
+   }
+
+   function onRequestEnd(e) {
+       //Check request type
+       if (e.type == "update") {
+           if (e.response == null || e.response.Errors == null) {
+               alert("Записът е успешно променен !");
+           }
+           else  {  alert(" Възникна грешка при промяната на записа !"); }
+       }
+       if (e.type == "destroy") {
+           if (e.response == null || e.response.Errors == null) {
+               alert("Записът е успешно изтрит !");
+           }
+           else { alert(" Възникна грешка при изтриването на записа !"); }
+       }
+   }
+
+  // function disableOnEdit(e) {
+   //    var model = e.model; //gets the model of the currently edited row
+  //     var ProductCode = model.ProductCode; 
+      // alert(ProductCode);
+ //      $.ajax({
+   //        type: "POST",
+  //         data: ProductCode,
+  //         url: '@Url.Action("VerifyProductCodeBool", "Totalizer")',
+  //         success: function (result) {
+  //             if (!result) {
+  //                 alert("Въведете валиден код продукт !")
+  //             }
+  //         },
+  //     })
+  // }
+       
+</script>
+

@@ -1,0 +1,44 @@
+﻿@using Kendo.Mvc.UI
+@model IEnumerable < CacheNomAdministration.WebApi.Models.Totalizers.IndexViewModels > 
+@{
+    ViewBag.Title = "Списък на тотализаторите по продукт и по контролна точка";
+}
+
+@Styles.Render("~/Content/kendo/css")
+@Styles.Render("~/Content/css")
+<br /><br /><br /><br /><br /><br />
+ <h4 style="text-align:center">Номенклатура на тотализатори</h4>
+@(Html.Kendo().Grid<CacheNomAdministration.WebApi.Models.Totalizers.IndexViewModels>()
+            .Name("totalizerGrid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.ControlPointName).Width(110).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.EngineeringUnit).Width(145);
+                columns.Bound(p => p.ProductCode).Width(130);
+                columns.Bound(p => p.TotalizerTag).Width(280).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.ControlPointID).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.FlowDirection).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.ControlerCode).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+                columns.Bound(p => p.PositionNumber).Width(130).HeaderHtmlAttributes(new { style = "white-space: normal" });
+            })
+             .HtmlAttributes(new { style = "height: 660px;width:1300px;" })
+            .Scrollable()
+            .Groupable()
+            .Sortable()
+            .Filterable()
+            .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5)
+                      )
+            .DataSource(dataSource => dataSource
+                                                .Ajax()
+                                                .Read(read => read.Action("GetAll", "Totalizer"))
+                                                .PageSize(15)
+                                     )
+)
+
+
+
+
+

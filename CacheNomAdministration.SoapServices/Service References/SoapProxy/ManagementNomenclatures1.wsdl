@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:s0="http://tempuri.org" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org">
+      <s:element name="AddRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="totalizertag" type="s0:ControlPointView" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ControlPointView">
+        <s:sequence>
+          <s:element name="TotalizerTag" type="s:string" />
+          <s:element name="ControlPointID" type="s:long" />
+          <s:element name="FlowDirection" type="s:long" />
+          <s:element name="ControlerCode" type="s:long" />
+          <s:element name="PositionNumber" type="s:long" />
+          <s:element minOccurs="0" name="ControlPointName" type="s:string" />
+          <s:element minOccurs="0" name="EngineeringUnit" type="s:string" />
+          <s:element minOccurs="0" name="ProductCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="AddRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecordTag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="tag" type="s:string" />
+            <s:element minOccurs="0" name="controlpointid" type="s:long" />
+            <s:element minOccurs="0" name="flowdirection" type="s:long" />
+            <s:element minOccurs="0" name="controlecode" type="s:long" />
+            <s:element minOccurs="0" name="positionnumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecordTagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="DeleteRecordTagResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfiguration">
+        <s:complexType>
+          <s:sequence />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="GetConfigurationResult" type="s0:ArrayOfTotalizatorTagControlPointTotalizatorTagControlPoint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTotalizatorTagControlPointTotalizatorTagControlPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TotalizatorTagControlPoint" nillable="true" type="s0:TotalizatorTagControlPoint" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TotalizatorTagControlPoint">
+        <s:sequence>
+          <s:element name="TotalizerTag" type="s:string" />
+          <s:element name="ControlPointID" type="s:long" />
+          <s:element name="FlowDirection" type="s:long" />
+          <s:element name="ControlerCode" type="s:long" />
+          <s:element name="PositionNumber" type="s:long" />
+          <s:element minOccurs="0" name="ControlPointName" type="s:string" />
+          <s:element minOccurs="0" name="EngineeringUnit" type="s:string" />
+          <s:element minOccurs="0" name="ProductCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetConfigurationId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="controlpointid" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="GetConfigurationIdResult" type="s0:ArrayOfTotalizatorTagControlPointTotalizatorTagControlPoint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIdControlPoint">
+        <s:complexType>
+          <s:sequence />
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIdControlPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="GetIdControlPointResult" type="s0:ArrayOfMeasuringPointsMeasuringPoints" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMeasuringPointsMeasuringPoints">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeasuringPoints" nillable="true" type="s0:MeasuringPoints" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeasuringPoints">
+        <s:sequence>
+          <s:element name="MeasuringPointId" type="s:long" />
+          <s:element minOccurs="0" name="MeasuringPointName">
+            <s:simpleType>
+              <s:restriction base="s:string">
+                <s:maxLength value="100" />
+              </s:restriction>
+            </s:simpleType>
+          </s:element>
+          <s:element minOccurs="0" name="ControlPoint" type="s:string" />
+          <s:element minOccurs="0" name="ZoneId" type="s:long" />
+          <s:element minOccurs="0" name="FlowDirection" type="s:long" />
+          <s:element minOccurs="0" name="ShortControlPointName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsValidControlPointID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="controlpointid" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidControlPointIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="IsValidControlPointIDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidControlPointName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="controlpointid" type="s:long" />
+            <s:element minOccurs="0" name="controlpointname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidControlPointNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="IsValidControlPointNameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidProductCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="productcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidProductCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="IsValidProductCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Test">
+        <s:complexType>
+          <s:sequence />
+        </s:complexType>
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="TestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRecordTag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="tag" type="s:string" />
+            <s:element minOccurs="0" name="controlpointid" type="s:long" />
+            <s:element minOccurs="0" name="flowdirection" type="s:long" />
+            <s:element minOccurs="0" name="controlecode" type="s:long" />
+            <s:element minOccurs="0" name="positionnumber" type="s:long" />
+            <s:element minOccurs="0" name="productcode" type="s:string" />
+            <s:element minOccurs="0" name="engineeringunit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRecordTagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="UpdateRecordTagResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddRecordSoapIn">
+    <wsdl:part name="parameters" element="s0:AddRecord" />
+  </wsdl:message>
+  <wsdl:message name="AddRecordSoapOut">
+    <wsdl:part name="parameters" element="s0:AddRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecordTagSoapIn">
+    <wsdl:part name="parameters" element="s0:DeleteRecordTag" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecordTagSoapOut">
+    <wsdl:part name="parameters" element="s0:DeleteRecordTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapIn">
+    <wsdl:part name="parameters" element="s0:GetConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapOut">
+    <wsdl:part name="parameters" element="s0:GetConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationIdSoapIn">
+    <wsdl:part name="parameters" element="s0:GetConfigurationId" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationIdSoapOut">
+    <wsdl:part name="parameters" element="s0:GetConfigurationIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIdControlPointSoapIn">
+    <wsdl:part name="parameters" element="s0:GetIdControlPoint" />
+  </wsdl:message>
+  <wsdl:message name="GetIdControlPointSoapOut">
+    <wsdl:part name="parameters" element="s0:GetIdControlPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidControlPointIDSoapIn">
+    <wsdl:part name="parameters" element="s0:IsValidControlPointID" />
+  </wsdl:message>
+  <wsdl:message name="IsValidControlPointIDSoapOut">
+    <wsdl:part name="parameters" element="s0:IsValidControlPointIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidControlPointNameSoapIn">
+    <wsdl:part name="parameters" element="s0:IsValidControlPointName" />
+  </wsdl:message>
+  <wsdl:message name="IsValidControlPointNameSoapOut">
+    <wsdl:part name="parameters" element="s0:IsValidControlPointNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidProductCodeSoapIn">
+    <wsdl:part name="parameters" element="s0:IsValidProductCode" />
+  </wsdl:message>
+  <wsdl:message name="IsValidProductCodeSoapOut">
+    <wsdl:part name="parameters" element="s0:IsValidProductCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="s0:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="s0:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecordTagSoapIn">
+    <wsdl:part name="parameters" element="s0:UpdateRecordTag" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecordTagSoapOut">
+    <wsdl:part name="parameters" element="s0:UpdateRecordTagResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ManagementNomenclaturesSoap">
+    <wsdl:operation name="AddRecord">
+      <wsdl:input message="s0:AddRecordSoapIn" />
+      <wsdl:output message="s0:AddRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecordTag">
+      <wsdl:input message="s0:DeleteRecordTagSoapIn" />
+      <wsdl:output message="s0:DeleteRecordTagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <wsdl:input message="s0:GetConfigurationSoapIn" />
+      <wsdl:output message="s0:GetConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationId">
+      <wsdl:input message="s0:GetConfigurationIdSoapIn" />
+      <wsdl:output message="s0:GetConfigurationIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdControlPoint">
+      <wsdl:input message="s0:GetIdControlPointSoapIn" />
+      <wsdl:output message="s0:GetIdControlPointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidControlPointID">
+      <wsdl:input message="s0:IsValidControlPointIDSoapIn" />
+      <wsdl:output message="s0:IsValidControlPointIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidControlPointName">
+      <wsdl:input message="s0:IsValidControlPointNameSoapIn" />
+      <wsdl:output message="s0:IsValidControlPointNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidProductCode">
+      <wsdl:input message="s0:IsValidProductCodeSoapIn" />
+      <wsdl:output message="s0:IsValidProductCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input message="s0:TestSoapIn" />
+      <wsdl:output message="s0:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecordTag">
+      <wsdl:input message="s0:UpdateRecordTagSoapIn" />
+      <wsdl:output message="s0:UpdateRecordTagSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ManagementNomenclaturesSoap" type="s0:ManagementNomenclaturesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRecord">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.AddRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecordTag">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.DeleteRecordTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationId">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.GetConfigurationId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdControlPoint">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.GetIdControlPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidControlPointID">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidControlPointID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidControlPointName">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidControlPointName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidProductCode">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidProductCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecordTag">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.UpdateRecordTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ManagementNomenclatures">
+    <wsdl:port name="ManagementNomenclaturesSoap" binding="s0:ManagementNomenclaturesSoap">
+      <soap:address location="http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

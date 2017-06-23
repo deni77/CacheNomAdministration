@@ -1,0 +1,94 @@
+﻿@model CacheNomAdministration.WebApi.Models.Totalizers.AddTotalizerTagViewModel
+
+@{ ViewBag.Title = "Добавяне на нов тотализатор таг";}
+<br /><br /><br /><br />
+<div class="form-container row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">@ViewBag.Title</div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-horizontal" id="content">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ControlPointID, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.ControlPointID, (IEnumerable<SelectListItem>) ViewBag.DropDownValuesControlPointId, "Изберете Id  контролна точка")
+                                @Html.ValidationMessageFor(model => model.ControlPointID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ControlPointName, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ControlPointName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ControlPointName, "", new { @class = "text-danger", @id = "ControlPointName" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EngineeringUnit, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.EngineeringUnit, (IEnumerable<SelectListItem>) ViewBag.EngineeringUnit, "Изберете мерна единица")
+                                @Html.ValidationMessageFor(model => model.EngineeringUnit, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ProductCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TotalizerTag, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.TotalizerTag, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TotalizerTag, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FlowDirection, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.FlowDirection, (IEnumerable<SelectListItem>) ViewBag.DropDownValuesFlowDirection, "Изберете тип на посоката")
+                                @Html.ValidationMessageFor(model => model.FlowDirection, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ControlerCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.ControlerCode, (IEnumerable<SelectListItem>) ViewBag.DropDownValuesControlerCode, "Изберете код на контролера")
+                                @Html.ValidationMessageFor(model => model.ControlerCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-8">
+                                <input type="submit" value="Добави" class="btn btn-default" />
+                                <a href=@Url.Action("Index","Totalizer") class="btn btn-danger">Отказ</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+    </div>
+</div>
+  
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ControlPointID').change(function () {
+                $.each($('#content').find($('#ControlPointName')), function () {
+                    $(this).val("");
+                    $('span#ControlPointName span').text("");
+                });
+            });
+            // $("input#ControlPointName").keypress(function (event) {
+            //   $('span#ControlPointName span').text("");
+            // });
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,43 @@
+﻿@using CacheNomAdministration.WebApi.Models.Totalizers
+@{ ViewBag.Title = "Списък на тотализатори по ID на контролна точка";}
+<br /><br /><br /><br /><br /><br />
+@Html.AntiForgeryToken()
+<div class="form-container row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">@ViewBag.Title</div>
+            <div class="panel-body">
+                <div class="form-horizontal" id="content">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("Id контролна точка", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ControlPointID", (IEnumerable<SelectListItem>) ViewData["DropDownValuesControlPointId"],
+                                                                             "Изберете Id  контролна точка", new { @id = "ControlPointID", @name = "ControlPointID" })
+                            @Html.ValidationMessage("ControlPointID", "", new { @class = "text-danger" })
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <input type="submit"  id="apply" value="Търсене" class="btn btn-default" />
+                            <a href=@Url.Action("Index", "Totalizer") class="btn btn-danger">Отказ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_GetByControlPointIdGrid");
+
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/custom/gridScripts")
+
+}
+
+
