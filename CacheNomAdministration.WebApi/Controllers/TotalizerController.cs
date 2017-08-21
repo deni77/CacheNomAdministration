@@ -6,6 +6,7 @@ using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -92,11 +93,18 @@ namespace CacheNomAdministration.WebApi.Controllers
           if (productCode!=null)
             {
                 bool result = false;
+                Stopwatch stopWatch = new Stopwatch();
                 try
                 {
                     ManagementNomenclaturesSoapClient client = new ManagementNomenclaturesSoapClient();
                     client.Endpoint.EndpointBehaviors.Add(new MessageBehavior("_system", "SYS"));
-                    result = client.IsValidProductCode(productCode);
+                   
+                    stopWatch.Start();
+                        result = client.IsValidProduct(productCode);
+                    stopWatch.Stop();
+                   
+                    TimeSpan ts = stopWatch.Elapsed;
+                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                 }
                 catch
                 {
@@ -123,7 +131,7 @@ namespace CacheNomAdministration.WebApi.Controllers
                 {
                     ManagementNomenclaturesSoapClient client = new ManagementNomenclaturesSoapClient();
                     client.Endpoint.EndpointBehaviors.Add(new MessageBehavior("_system", "SYS"));
-                    result = client.IsValidProductCode(productCode);
+                    result = client.IsValidProduct(productCode);
                 }
                 catch
                 {
@@ -147,6 +155,7 @@ namespace CacheNomAdministration.WebApi.Controllers
         [HttpGet]
         public ActionResult VerifyControlPointName(int controlPointId, string controlPointName)
         {
+
             if (controlPointName != null)
             {
                 bool result = false;

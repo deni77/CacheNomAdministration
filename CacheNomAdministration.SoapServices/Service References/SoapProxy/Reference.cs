@@ -521,12 +521,12 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
         
         // CODEGEN: Generating message contract since element name productcode from namespace http://tempuri.org is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidProduct" +
-            "Code", ReplyAction="*")]
-        CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse IsValidProductCode(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest request);
+            "", ReplyAction="*")]
+        CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse IsValidProduct(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidProduct" +
-            "Code", ReplyAction="*")]
-        System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse> IsValidProductCodeAsync(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest request);
+            "", ReplyAction="*")]
+        System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse> IsValidProductAsync(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest request);
         
         // CODEGEN: Generating message contract since element name TestResult from namespace http://tempuri.org is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.Test", ReplyAction="*")]
@@ -963,15 +963,15 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class IsValidProductCodeRequest {
+    public partial class IsValidProductRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="IsValidProductCode", Namespace="http://tempuri.org", Order=0)]
-        public CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="IsValidProduct", Namespace="http://tempuri.org", Order=0)]
+        public CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequestBody Body;
         
-        public IsValidProductCodeRequest() {
+        public IsValidProductRequest() {
         }
         
-        public IsValidProductCodeRequest(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequestBody Body) {
+        public IsValidProductRequest(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -980,15 +980,15 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org")]
-    public partial class IsValidProductCodeRequestBody {
+    public partial class IsValidProductRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string productcode;
         
-        public IsValidProductCodeRequestBody() {
+        public IsValidProductRequestBody() {
         }
         
-        public IsValidProductCodeRequestBody(string productcode) {
+        public IsValidProductRequestBody(string productcode) {
             this.productcode = productcode;
         }
     }
@@ -997,15 +997,15 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class IsValidProductCodeResponse {
+    public partial class IsValidProductResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="IsValidProductCodeResponse", Namespace="http://tempuri.org", Order=0)]
-        public CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="IsValidProductResponse", Namespace="http://tempuri.org", Order=0)]
+        public CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponseBody Body;
         
-        public IsValidProductCodeResponse() {
+        public IsValidProductResponse() {
         }
         
-        public IsValidProductCodeResponse(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponseBody Body) {
+        public IsValidProductResponse(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1014,16 +1014,16 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org")]
-    public partial class IsValidProductCodeResponseBody {
+    public partial class IsValidProductResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool IsValidProductCodeResult;
+        public bool IsValidProductResult;
         
-        public IsValidProductCodeResponseBody() {
+        public IsValidProductResponseBody() {
         }
         
-        public IsValidProductCodeResponseBody(bool IsValidProductCodeResult) {
-            this.IsValidProductCodeResult = IsValidProductCodeResult;
+        public IsValidProductResponseBody(bool IsValidProductResult) {
+            this.IsValidProductResult = IsValidProductResult;
         }
     }
     
@@ -1372,28 +1372,28 @@ namespace CacheNomAdministration.SoapServices.SoapProxy {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap.IsValidProductCode(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest request) {
-            return base.Channel.IsValidProductCode(request);
+        CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap.IsValidProduct(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest request) {
+            return base.Channel.IsValidProduct(request);
         }
         
-        public bool IsValidProductCode(string productcode) {
-            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest inValue = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest();
-            inValue.Body = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequestBody();
+        public bool IsValidProduct(string productcode) {
+            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest inValue = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest();
+            inValue.Body = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequestBody();
             inValue.Body.productcode = productcode;
-            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse retVal = ((CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap)(this)).IsValidProductCode(inValue);
-            return retVal.Body.IsValidProductCodeResult;
+            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse retVal = ((CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap)(this)).IsValidProduct(inValue);
+            return retVal.Body.IsValidProductResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse> CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap.IsValidProductCodeAsync(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest request) {
-            return base.Channel.IsValidProductCodeAsync(request);
+        System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse> CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap.IsValidProductAsync(CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest request) {
+            return base.Channel.IsValidProductAsync(request);
         }
         
-        public System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeResponse> IsValidProductCodeAsync(string productcode) {
-            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest inValue = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequest();
-            inValue.Body = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductCodeRequestBody();
+        public System.Threading.Tasks.Task<CacheNomAdministration.SoapServices.SoapProxy.IsValidProductResponse> IsValidProductAsync(string productcode) {
+            CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest inValue = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequest();
+            inValue.Body = new CacheNomAdministration.SoapServices.SoapProxy.IsValidProductRequestBody();
             inValue.Body.productcode = productcode;
-            return ((CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap)(this)).IsValidProductCodeAsync(inValue);
+            return ((CacheNomAdministration.SoapServices.SoapProxy.ManagementNomenclaturesSoap)(this)).IsValidProductAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

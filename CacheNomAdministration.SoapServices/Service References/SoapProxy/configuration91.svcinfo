@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="3KcdH9qlxTwQyxUyCzqAJc27yWc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="OtzDfId/MmTQSEDf66fuMOjCCmk=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ManagementNomenclaturesSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ManagementNomenclaturesSoap" contract="SoapProxy.ManagementNomenclaturesSoap" bindingType="basicHttpBinding" address="http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls" bindingConfiguration="ManagementNomenclaturesSoap">
+    <endpoint name="ManagementNomenclaturesSoap" contract="SoapProxy.ManagementNomenclaturesSoap" bindingType="basicHttpBinding" address="http://192.168.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls" bindingConfiguration="ManagementNomenclaturesSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls</serializedValue>
+          <serializedValue>http://192.168.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

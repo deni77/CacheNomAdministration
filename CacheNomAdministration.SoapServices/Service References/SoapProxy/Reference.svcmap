@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls?wsdl=0&amp;CacheUserName=_system&amp;CachePassword=SYS" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls?wsdl=0&amp;CacheUserName=_system&amp;CachePassword=SYS" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ManagementNomenclatures1.wsdl" MetadataType="Wsdl" ID="4d0f54b3-7a6a-4b99-a74a-36e208a5c715" SourceId="1" SourceUrl="http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls?wsdl=0&amp;CSPCHD=00300001000031858qS1000000xncknr6NWob0eDDi6EVNCg--" />
+    <MetadataFile FileName="ManagementNomenclatures1.wsdl" MetadataType="Wsdl" ID="a152ea9f-ec06-4c32-ba64-e66f0c47995a" SourceId="1" SourceUrl="http://192.168.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls?wsdl=0&amp;CSPCHD=00100001000023z7W14z000000aVtuUHdbjnz26ixoen1xzw--" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

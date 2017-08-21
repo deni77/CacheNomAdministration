@@ -151,17 +151,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="IsValidProductCode">
+      <s:element name="IsValidProduct">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" name="productcode" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="IsValidProductCodeResponse">
+      <s:element name="IsValidProductResponse">
         <s:complexType>
           <s:sequence>
-            <s:element name="IsValidProductCodeResult" type="s:boolean" />
+            <s:element name="IsValidProductResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -241,11 +241,11 @@
   <wsdl:message name="IsValidControlPointNameSoapOut">
     <wsdl:part name="parameters" element="s0:IsValidControlPointNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IsValidProductCodeSoapIn">
-    <wsdl:part name="parameters" element="s0:IsValidProductCode" />
+  <wsdl:message name="IsValidProductSoapIn">
+    <wsdl:part name="parameters" element="s0:IsValidProduct" />
   </wsdl:message>
-  <wsdl:message name="IsValidProductCodeSoapOut">
-    <wsdl:part name="parameters" element="s0:IsValidProductCodeResponse" />
+  <wsdl:message name="IsValidProductSoapOut">
+    <wsdl:part name="parameters" element="s0:IsValidProductResponse" />
   </wsdl:message>
   <wsdl:message name="TestSoapIn">
     <wsdl:part name="parameters" element="s0:Test" />
@@ -288,9 +288,9 @@
       <wsdl:input message="s0:IsValidControlPointNameSoapIn" />
       <wsdl:output message="s0:IsValidControlPointNameSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="IsValidProductCode">
-      <wsdl:input message="s0:IsValidProductCodeSoapIn" />
-      <wsdl:output message="s0:IsValidProductCodeSoapOut" />
+    <wsdl:operation name="IsValidProduct">
+      <wsdl:input message="s0:IsValidProductSoapIn" />
+      <wsdl:output message="s0:IsValidProductSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Test">
       <wsdl:input message="s0:TestSoapIn" />
@@ -366,8 +366,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="IsValidProductCode">
-      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidProductCode" style="document" />
+    <wsdl:operation name="IsValidProduct">
+      <soap:operation soapAction="http://tempuri.org/ManagementNomenclatures.ManagementNomenclatures.IsValidProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -396,7 +396,7 @@
   </wsdl:binding>
   <wsdl:service name="ManagementNomenclatures">
     <wsdl:port name="ManagementNomenclaturesSoap" binding="s0:ManagementNomenclaturesSoap">
-      <soap:address location="http://10.94.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls" />
+      <soap:address location="http://192.168.23.31:57772/csp/webservices/ManagementNomenclatures.ManagementNomenclatures.cls" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
